@@ -8,22 +8,30 @@
 # hlsearch on (H) or off (h):
 ~h
 # Command Line History (newest to oldest):
+:wq
+:'<,'>
 :q
+:w
+:saveas student_info.h
 :tabnew
+:saveas grade.h
+:tabclose
+:tabnext
+:tab 1
+:tab 0
+:tab0
 :newtab
 :q!
+:color
+:qall
 :quitall
 :2gt
 :gt
 :tab 2
-:tab 1
-:tab 0
-:tab0
 :tabrm
 :Q
 :help tabnew
 :help tabline
-:tabnext
 :split
 :quitall!
 :help airline
@@ -32,13 +40,11 @@
 :h laststatus
 :AirlineToggledOn
 :AirlineRefresh
-:wq
 :AirlineToggle
 :AirlineTheme luna
 :AirlineTheme wombat
 :Helptags
 :helptags
-:w
 :'<,'>q
 :quit
 
@@ -51,127 +57,349 @@
 # Input Line History (newest to oldest):
 
 # Registers:
-""1	LINE	0
+"1	CHAR	0
+	set ttimeoutlen=50
+	set t_Co=256
+	set laststatus=2
+	l
+"2	CHAR	0
+	hi clear
+	
+	if exists("syntax_on")
+	  syntax reset
+	endif
+	
+	let colors_name = "wombat"
+	
+	
+	" Vim >= 7.0 specific colors
+	if version >= 700
+	  hi CursorLine guibg=#2d2d2d
+	  hi CursorColumn guibg=#2d2d2d
+	  hi MatchParen guifg=#f6f3e8 guibg=#857b6f gui=bold
+	  hi Pmenu 		guifg=#f6f3e8 guibg=#444444
+	  hi PmenuSel 	guifg=#000000 guibg=#cae682
+	endif
+	
+	" General colors
+	hi Cursor 		guifg=NONE    guibg=#656565 gui=none
+	hi Normal 		guifg=#f6f3e8 guibg=#242424 gui=none
+	hi NonText 		guifg=#808080 guibg=#303030 gui=none
+	hi LineNr 		guifg=#857b6f guibg=#000000 gui=none
+	hi StatusLine 	guifg=#f6f3e8 guibg=#444444 gui=italic
+	hi StatusLineNC guifg=#857b6f guibg=#444444 gui=none
+	hi VertSplit 	guifg=#444444 guibg=#444444 gui=none
+	hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none
+	hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
+	hi Visual		guifg=#f6f3e8 guibg=#444444 gui=none
+	hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
+	
+	" Syntax highlighting
+	hi Comment 		guifg=#99968b gui=italic
+	hi Todo 		guifg=#8f8f8f gui=italic
+	hi Constant 	guifg=#e5786d gui=none
+	hi String 		guifg=#95e454 gui=italic
+	hi Identifier 	guifg=#cae682 gui=none
+	hi Function 	guifg=#cae682 gui=none
+	hi Type 		guifg=#cae682 gui=none
+	hi Statement 	guifg=#8ac6f2 gui=none
+	hi Keyword		guifg=#8ac6f2 gui=none
+	hi PreProc 		guifg=#e5786d gui=none
+	hi Number		guifg=#e5786d gui=none
+	hi Special		guifg=#e7f6da gui=none
+	
+	
+"3	CHAR	0
+	hi clear
+	
+	if exists("syntax_on")
+	  syntax reset
+	endif
+	
+	let colors_name = "wombat"
+	
+	
+	" Vim >= 7.0 specific colors
+	if version >= 700
+	  hi CursorLine guibg=#2d2d2d
+	  hi CursorColumn guibg=#2d2d2d
+	  hi MatchParen guifg=#f6f3e8 guibg=#857b6f gui=bold
+	  hi Pmenu 		guifg=#f6f3e8 guibg=#444444
+	  hi PmenuSel 	guifg=#000000 guibg=#cae682
+	endif
+	
+	" General colors
+	hi Cursor 		guifg=NONE    guibg=#656565 gui=none
+	hi Normal 		guifg=#f6f3e8 guibg=#242424 gui=none
+	hi NonText 		guifg=#808080 guibg=#303030 gui=none
+	hi LineNr 		guifg=#857b6f guibg=#000000 gui=none
+	hi StatusLine 	guifg=#f6f3e8 guibg=#444444 gui=italic
+	hi StatusLineNC guifg=#857b6f guibg=#444444 gui=none
+	hi VertSplit 	guifg=#444444 guibg=#444444 gui=none
+	hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none
+	hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold
+	hi Visual		guifg=#f6f3e8 guibg=#444444 gui=none
+	hi SpecialKey	guifg=#808080 guibg=#343434 gui=none
+	
+	" Syntax highlighting
+	hi Comment 		guifg=#99968b gui=italic
+	hi Todo 		guifg=#8f8f8f gui=italic
+	hi Constant 	guifg=#e5786d gui=none
+	hi String 		guifg=#95e454 gui=italic
+	hi Identifier 	guifg=#cae682 gui=none
+	hi Function 	guifg=#cae682 gui=none
+	hi Type 		guifg=#cae682 gui=none
+	hi Statement 	guifg=#8ac6f2 gui=none
+	hi Keyword		guifg=#8ac6f2 gui=none
+	hi PreProc 		guifg=#e5786d gui=none
+	hi Number		guifg=#e5786d gui=none
+	hi Special		guifg=#e7f6da gui=none
+	
+	
+"4	CHAR	0
+	highlight Comment ctermbg=LightGray
+	highlight Constant ctermbg=LightBlue
+	highlight Normal ctermbg=White
+	highlight NonText ctermbg=Yellow
+	highlight Special ctermbg=Magenta
+	highlight Cursor ctermbgiv
+"5	LINE	0
 	hello
-"2	LINE	0
+"6	LINE	0
 	there
-"3	LINE	0
+"7	LINE	0
 	hello world
-"-	CHAR	0
-	hello
+""-	CHAR	0
+	 
 
 # File marks:
-'0  1  0  ~/Programs/Practice/zipped/stuff.txt
-'1  1  0  ~/.vimrc
-'2  37  1  ~/.vimrc
-'3  1  0  ~/version
-'4  1  0  ~/Downloads/minimal.vim
-'5  2  0  /tmp/tutorAlZVNB
-'6  5  28  ~/Programs/C++/ch0/helloworld.cpp
-'7  6  0  ~/Programs/C++/ch0/helloworld.cpp
-'8  6  0  ~/Programs/C++/ch0/helloworld.cpp
-'9  5  28  ~/Programs/C++/ch0/helloworld.cpp
+'0  118  55  ~/.bashrc
+'1  14  20  ~/Programs/C++/ch3/squares.cpp
+'2  16  4  ~/Programs/C++/ch3/squares.cpp
+'3  49  0  ~/Programs/C++/ch3/student_info.cpp
+'4  184  12  ~/.vimrc
+'5  1  0  ~/.vimr
+'6  116  37  ~/.vimrc
+'7  11  0  ~/Programs/C++/ch3/student_info.cpp
+'8  1  0  ~/.vimrc
+'9  3  13  ~/.vimrc
 
 # Jumplist (newest first):
--'  1  0  ~/Programs/Practice/zipped/stuff.txt
+-'  118  55  ~/.bashrc
+-'  1  0  ~/.bashrc
+-'  9  0  ~/.bashrc
+-'  14  20  ~/Programs/C++/ch3/squares.cpp
+-'  13  44  ~/Programs/C++/ch3/squares.cpp
+-'  1  0  ~/Programs/C++/ch3/squares.cpp
+-'  16  4  ~/Programs/C++/ch3/squares.cpp
+-'  49  0  ~/Programs/C++/ch3/student_info.cpp
+-'  1  0  ~/Programs/C++/ch3/student_info.cpp
+-'  184  12  ~/.vimrc
+-'  66  0  ~/.vimrc
 -'  1  0  ~/.vimrc
--'  37  1  ~/.vimrc
--'  1  0  ~/version
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
+-'  1  0  ~/.vimr
+-'  116  37  ~/.vimrc
+-'  11  0  ~/Programs/C++/ch3/student_info.cpp
+-'  3  13  ~/.vimrc
+-'  45  15  ~/.vimrc
+-'  10  0  ~/Programs/C++/ch3/student_info.cpp
+-'  180  0  ~/.vimrc
+-'  38  1  ~/.vimrc
+-'  185  0  ~/.vimrc
+-'  1  0  ~/.vimrfc
+-'  36  48  ~/.vimrc
+-'  17  0  ~/.vimrc
+-'  4  0  ~/.vimrc
+-'  9  24  ~/Programs/C++/ch3/student_info.cpp
+-'  6  3  ~/Programs/C++/ch0/helloworld.cpp
 -'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  /tmp/tutorAlZVNB
--'  5  28  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/Programs/C++/ch0/helloworld.cpp
--'  6  0  ~/Programs/C++/ch0/helloworld.cpp
--'  1  0  ~/version
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  ~/version
--'  1  0  ~/Downloads/minimal.vim
--'  2  0  /tmp/tutorAlZVNB
--'  1  0  ~/.vimrc
--'  37  1  ~/.vimrc
+-'  7  12  ~/Programs/C++/ch0/helloworld.cpp
 -'  1  0  ~/Programs/Practice/zipped/stuff.txt
+-'  35  1  ~/.vimrc
+-'  1  0  ~/version
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  8  0  ~/Programs/C++/ch0/helloworld.cpp
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  1  0  ~/version
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  ~/version
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  ~/Programs/Practice/zipped/stuff.txt
+-'  1  0  ~/Programs/Practice/zipped/stuff.txt
+-'  1  0  ~/version
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  1  0  ~/Downloads/minimal.vim
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
+-'  2  0  /tmp/tutorAlZVNB
+-'  1  0  /tmp/tutorAlZVNB
 
 # History of marks within files (newest to oldest):
+
+> ~/.bashrc
+	"	118	55
+	^	118	56
+	.	118	55
+	+	118	55
+
+> ~/Programs/C++/ch3/squares.cpp
+	"	14	20
+	^	14	22
+	.	14	21
+	+	1	19
+	+	17	0
+	+	16	0
+	+	13	0
+	+	7	16
+	+	13	39
+	+	8	16
+	+	10	0
+	+	8	15
+	+	3	16
+	+	13	26
+	+	14	24
+	+	15	12
+	+	2	17
+	+	8	36
+	+	13	18
+	+	15	18
+	+	13	20
+	+	15	20
+	+	8	16
+	+	13	16
+	+	15	19
+	+	10	0
+	+	15	20
+	+	4	15
+	+	9	14
+	+	15	23
+	+	14	21
+
+> ~/Programs/C++/ch3/student_info.cpp
+	"	49	0
+	^	38	13
+	.	48	12
+	+	9	25
+	+	10	0
+	+	10	0
+	+	16	0
+	+	11	54
+	+	12	47
+	+	13	52
+	+	14	48
+	+	15	48
+	+	49	1
+	+	19	34
+	+	28	52
+	+	48	12
+
+> ~/.vimrc
+	"	184	12
+	^	184	13
+	.	184	12
+	+	201	15
+	+	207	24
+	+	203	16
+	+	205	18
+	+	4	0
+	+	4	24
+	+	22	0
+	+	4	104
+	+	21	4
+	+	1	0
+	+	36	79
+	+	36	83
+	+	36	84
+	+	36	78
+	+	36	80
+	+	36	81
+	+	36	74
+	+	185	0
+	+	36	67
+	+	185	34
+	+	36	49
+	+	37	0
+	+	185	0
+	+	38	0
+	+	185	0
+	+	179	48
+	+	60	0
+	+	38	2
+	+	5	0
+	+	4	0
+	+	42	0
+	+	43	0
+	+	45	16
+	+	46	0
+	+	3	13
+	+	116	37
+	+	184	12
+
+> ~/.vimr
+	"	1	0
+
+> ~/.vimrfc
+	"	1	0
+
+> ~/Programs/C++/ch0/helloworld.cpp
+	"	6	3
+	^	6	4
+	.	6	3
+	+	8	1
+	+	6	29
+	+	7	11
+	+	6	38
+	+	7	12
+	+	2	19
+	+	6	3
 
 > ~/Programs/Practice/zipped/stuff.txt
 	"	1	0
@@ -186,21 +414,6 @@
 	"	205	36
 	m	148	0
 
-> ~/.vimrc
-	"	1	0
-	^	1	0
-	.	1	0
-	+	55	15
-	+	61	24
-	+	57	16
-	+	59	18
-	+	4	0
-	+	3	24
-	+	24	0
-	+	5	104
-	+	23	4
-	+	1	0
-
 > ~/version
 	"	1	0
 
@@ -209,10 +422,3 @@
 
 > /tmp/tutorAlZVNB
 	"	2	0
-
-> ~/Programs/C++/ch0/helloworld.cpp
-	"	5	28
-	^	5	29
-	.	5	29
-	+	6	1
-	+	5	29
